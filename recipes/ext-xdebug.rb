@@ -8,9 +8,11 @@ pkg = case node["platform_family"]
       else 'php5-xdebug' # untested, so might be wrong
       end
 
+filename = if platform?("ubuntu") then '20-xdebug.ini' else 'xdebug.ini' end
+
 package pkg
 
-template "#{node['jolicode-php']['real_conf_dir']}/xdebug.ini" do
+template "#{node['jolicode-php']['real_conf_dir']}/#{filename}" do
   source "xdebug.ini.erb"
   owner "root"
   group "root"

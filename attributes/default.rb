@@ -15,6 +15,9 @@ when "debian"
   node.default['jolicode-php']['real_conf_dir'] = '/etc/php5/conf.d'
   node.default['jolicode-php']['ext_dir'] = '/usr/lib/php5/20090626'
 
+  if platform?("ubuntu")
+    node.default['jolicode-php']['ext_dir'] = '/usr/lib/php5/20100525'
+  end
   if node['jolicode-php']['dotdeb']
     node.default['jolicode-php']['real_conf_dir'] = '/etc/php5/mods-available'
     node.default['jolicode-php']['ext_dir'] = '/usr/lib/php5/20100525'
